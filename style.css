@@ -1,0 +1,227 @@
+/* style.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #00111a, #00334d);
+  color: white;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+header {
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 20px 0;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 0 10px #ffd700;
+}
+
+.gift-box {
+  width: 120px;
+  height: 120px;
+  background: #222;
+  border-radius: 20px 20px 10px 10px;
+  margin: 0 auto;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 0 15px #ff4455;
+  transition: transform 0.3s ease;
+}
+
+.gift-box:hover {
+  transform: scale(1.1);
+}
+
+.gift-box .lid {
+  width: 120px;
+  height: 40px;
+  background: #ff4466;
+  border-radius: 20px 20px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 15px #ff4466;
+}
+
+.gift-box .heart {
+  font-size: 48px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  user-select: none;
+  color: #ff4466;
+  text-shadow: 0 0 8px #ff4466;
+}
+
+#message {
+  max-width: 400px;
+  margin: 20px auto;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  text-align: center;
+  box-shadow: 0 0 10px #ff6677;
+  user-select: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.quiz {
+  max-width: 600px;
+  margin: 30px auto;
+  background: rgba(20, 20, 40, 0.6);
+  border-radius: 10px;
+  padding: 20px 30px;
+  box-shadow: 0 0 20px #0099ff;
+  user-select: none;
+}
+
+.quiz h3 {
+  margin-bottom: 15px;
+  color: #00ccff;
+  text-align: center;
+  text-shadow: 0 0 6px #00ccff;
+}
+
+.quiz ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quiz li {
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #004466;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  color: #cceeff;
+  box-shadow: 0 0 8px #004466;
+}
+
+.quiz li:hover {
+  background: #006699;
+  box-shadow: 0 0 12px #00bbff;
+}
+
+.quiz li.answered em {
+  display: block;
+  margin-top: 8px;
+  font-style: italic;
+  color: #ff6677;
+  text-shadow: 0 0 5px #ff6677;
+}
+
+.timeline {
+  max-width: 600px;
+  margin: 30px auto;
+  background: rgba(0, 30, 50, 0.7);
+  border-radius: 10px;
+  padding: 20px 25px;
+  box-shadow: 0 0 20px #004466;
+  font-size: 1rem;
+  user-select: none;
+}
+
+.timeline h3 {
+  color: #66ccff;
+  margin-bottom: 15px;
+  text-align: center;
+  text-shadow: 0 0 6px #66ccff;
+}
+
+.timeline p {
+  margin: 10px 0;
+  opacity: 0;
+  animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+footer {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 15px 10px;
+  color: #ffbb33;
+  text-shadow: 0 0 8px #ffbb33;
+  user-select: none;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.fade-in:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.fade-in:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.fade-in:nth-child(3) {
+  animation-delay: 1.3s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Kalp yağmuru (JS tarafında da kullanılıyor) */
+.heart-fall {
+  position: fixed;
+  top: -50px;
+  font-size: 24px;
+  color: #ff4466;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  pointer-events: none;
+  user-select: none;
+  text-shadow: 0 0 8px #ff4466;
+  z-index: 1000;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Canvas yıldız tam sayfa */
+#star-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  user-select: none;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Babalar Günü Masalı</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Kalp yağmuru için stil */
+    .heart-fall {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      color: #ff4466;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+<button style="padding: 1rem;" onclick="window.open('https://youtu.be/SHrKl0HMeQ4', '_blank')"> </button>
+    Müziği Aç 🎵
+  </button>
+
+  <audio id="bg-music" loop>
+    <source src="duygusal-muzik.mp3" type="audio/mpeg" />
+    Tarayıcınız ses öğesini desteklemiyor.
+  </audio>
+
+  <audio id="bg-music" loop>
+    <source src="bana-bir-masal-anlat-baba.mp3" type="audio/mpeg" />
+    Tarayıcınız ses öğesini desteklemiyor.
+  </audio>
+
+  <header class="fade-in">Babalar Günü Masalı</header>
+
+  <div class="gift-box" onclick="showMessage()">
+    <div class="lid"></div>
+    <div class="heart">❤️</div>
+  </div>
+
+  <div id="message" class="fade-in hidden">
+    <p style="animation-delay: 1s;">Zaman ve mesafe hiçbir şey değiştirmez.</p>
+    <p style="animation-delay: 2s;">Seni hep seviyorum, baba. 💙</p>
+    <p style="animation-delay: 3s;"><strong>– Neval</strong></p>
+  </div>
+
+  <div class="quiz fade-in">
+    <h3>Soru-Cevap Oyunu</h3>
+    <ul id="quiz-list"></ul>
+  </div>
+
+  <div class="timeline fade-in">
+    <h3>Zaman Tüneli</h3>
+    <p style="animation-delay: 1s;">🧸 <strong>Küçüklüğüm:</strong> Parkta koşarken elimi tuttuğun günü unutmam.</p>
+    <p style="animation-delay: 2s;">🏫 <strong>İlkokul:</strong> Okuldan derslerimde hep beni motive ettin.</p>
+    <p style="animation-delay: 3s;">🎓 <strong>Lise:</strong> Her başarımda gözlerin parladı, seninle büyüdüm.</p>
+    <p style="animation-delay: 4s;">🌍 <strong>Bugün:</strong> Kilometrelerce uzakta olsak da, kalbime en yakın sensin.</p>
+    <p style="animation-delay: 5s;">☀️ <strong>Yarın:</strong> Sarıldığımız günleri sabırsızlıkla bekliyorum.</p>
+  </div>
+
+  <footer class="fade-in">
+    Baba olmak sadece yanında olmak değilmiş... Kalbimin içinde olmaya devam ediyorsun 💫
+  </footer>
+
+  <canvas id="star-canvas"></canvas>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Kalp yağmuru oluşturma fonksiyonu
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart-fall");
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      heart.style.fontSize = (Math.random() * 24 + 16) + "px";
+      document.body.appendChild(heart);
+      heart.textContent = "❤️";
+
+      // Animasyon bitince kaldır
+      heart.addEventListener("animationend", () => {
+        heart.remove();
+      });
+    }
+
+    // Sürekli kalp oluştur
+    setInterval(createHeart, 400);
+
+    // Müzik otomatik değil, kullanıcı tıklayınca çalsın
+    document.body.addEventListener("click", function playMusic() {
+      const music = document.getElementById("bg-music");
+      if (music) {
+        music.play().catch(() => {});
+      }
+      document.body.removeEventListener("click", playMusic);
+    });
+  </script>
+  
+
+</body>
+</html>
