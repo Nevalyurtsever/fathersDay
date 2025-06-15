@@ -5,17 +5,19 @@ function showMessage() {
     message.classList.remove("hidden");
   }
 }
+
 const playMusicBtn = document.getElementById("play-music-btn");
 const bgMusic = document.getElementById("bg-music");
 
-playMusicBtn.addEventListener("click", () => {
-  bgMusic.play().then(() => {
-    playMusicBtn.style.display = "none";  // buton gizlensin
-  }).catch(err => {
-    alert("Müzik çalınamadı, lütfen cihazınızda sesi açın.");
+if (playMusicBtn && bgMusic) {
+  playMusicBtn.addEventListener("click", () => {
+    bgMusic.play().then(() => {
+      playMusicBtn.style.display = "none";  // buton gizlensin
+    }).catch(err => {
+      alert("Müzik çalınamadı, lütfen cihazınızda sesi açın.");
+    });
   });
-});
-
+}
 
 // Quiz soruları ve cevapları
 const quizData = [
@@ -30,14 +32,27 @@ const quizList = document.getElementById("quiz-list");
 
 quizData.forEach(item => {
   const li = document.createElement("li");
-  li.textContent = item.q;
   li.style.cursor = "pointer";
   li.style.userSelect = "none";
+  li.classList.add("quiz-item");
+
+  const questionText = document.createElement("span");
+  questionText.textContent = item.q;
+  li.appendChild(questionText);
+
+  const answerText = document.createElement("em");
+  answerText.textContent = item.a;
+  answerText.style.color = "#ff6677";
+  answerText.style.marginTop = "8px";
+  answerText.style.display = "none";  // Başlangıçta gizli
+  answerText.style.userSelect = "text";
+  li.appendChild(answerText);
 
   li.addEventListener("click", () => {
-    if (!li.classList.contains("answered")) {
-      li.innerHTML += `<br><em style="color:#ff6677; margin-top:8px; display:block;">Cevap: ${item.a}</em>`;
-      li.classList.add("answered");
+    if (answerText.style.display === "none") {
+      answerText.style.display = "block";
+    } else {
+      answerText.style.display = "none";
     }
   });
 
